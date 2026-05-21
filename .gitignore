@@ -1,0 +1,7 @@
+# pcf-pool/.gitignore
+node_modules/
+dist/
+out/
+*.zip
+.DS_Store
+.env
