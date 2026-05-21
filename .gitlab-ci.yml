@@ -19,7 +19,7 @@ validate-structure:
 
 mirror-to-github:
   stage: mirror
-  image: alpine/git:latest
+  image: bitnami/git:latest
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   script:
