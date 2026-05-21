@@ -1,1 +1,18 @@
 # GitLab CI pipeline (placeholder)
+# pcf-pool/.gitlab-ci.yml
+
+stages:
+  - validate
+
+variables:
+  NODE_VERSION: "18"
+
+validate-structure:
+  stage: validate
+  image: node:18-alpine
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main"'
+  script:
+    - echo "Validating monorepo structure..."
+    - test -d controls && echo "controls/ exists" || (echo "controls/ missing" && exit 1)
+    - echo "Structure OK"
