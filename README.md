@@ -6,8 +6,8 @@ model-driven apps, desarrollados por Ángel Rubén García Guerra.
 ## Controles disponibles
 
 | Control | Descripción | Estado |
-|--------|-------------|--------|
-| [Progress Bar Field](./controls/progress-bar-field/) | Visualiza un campo numérico como barra de progreso | 🚧 En desarrollo |
+|---------|-------------|--------|
+| [Progress Bar Field](./controls/ProgressBarField/) | Visualiza un campo numérico como barra de progreso con colores por umbral | ✅ Disponible |
 
 ## Stack
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="DQS" constructor="ProgressBarField" version="1.0.0"
+    display-name-key="Progress Bar Field"
+    description-key="Visualizes a numeric field as a configurable progress bar"
+    control-type="virtual">
+    <external-service-usage enabled="false" />
+    <type-group name="numbers">
+      <type>Whole.None</type>
+      <type>Currency</type>
+      <type>FP</type>
+      <type>Decimal</type>
+    </type-group>
+    <property name="value"
+      display-name-key="Value"
+      description-key="Numeric field to display as progress bar"
+      of-type-group="numbers"
+      usage="bound"
+      required="true" />
+    <property name="minValue"
+      display-name-key="Minimum Value"
+      description-key="Minimum value of the range (default: 0)"
+      of-type="Whole.None"
+      usage="input"
+      required="false" />
+    <property name="maxValue"
+      display-name-key="Maximum Value"
+      description-key="Maximum value of the range (default: 100)"
+      of-type="Whole.None"
+      usage="input"
+      required="false" />
+    <property name="showLabel"
+      display-name-key="Show Percentage Label"
+      description-key="Show percentage label next to the bar"
+      of-type="TwoOptions"
+      usage="input"
+      required="false" />
+    <property name="colorMode"
+      display-name-key="Color Mode"
+      description-key="Auto: green/orange/red by threshold. Fixed: always brand blue"
+      of-type="Enum"
+      usage="input"
+      required="false">
+      <value name="auto" display-name-key="Auto (threshold-based)">0</value>
+      <value name="fixed" display-name-key="Fixed (brand color)">1</value>
+    </property>
+    <resources>
+      <code path="index.ts" order="1" />
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.3.1" />
+    </resources>
+  </control>
+</manifest>
