@@ -1,0 +1,2 @@
+C:\dev\github\pcf-pool\controls\obj\Debug\controls.pcfproj.AssemblyReference.cache
+C:\dev\github\pcf-pool\controls\obj\Debug\controls.pcfproj.CoreCompileInputs.cache
