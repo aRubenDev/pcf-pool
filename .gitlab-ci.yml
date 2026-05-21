@@ -2,20 +2,39 @@
 
 stages:
   - validate
+  - build
   - mirror
 
 variables:
-  NODE_VERSION: "18"
+  NODE_VERSION: "20"
 
 validate-structure:
   stage: validate
-  image: node:18-alpine
+  image: node:20-alpine
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main"'
   script:
     - echo "Validating monorepo structure..."
     - test -d controls && echo "controls/ exists" || (echo "controls/ missing" && exit 1)
     - echo "Structure OK"
+
+build-progress-bar-field:
+  stage: build
+  image: node:20-alpine
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - controls/ProgressBarField/**/*
+        - controls/package.json
+        - controls/tsconfig.json
+  script:
+    - cd controls
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - controls/out/
+    expire_in: 1 day
 
 mirror-to-github:
   stage: mirror
