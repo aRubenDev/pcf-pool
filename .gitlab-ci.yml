@@ -1,8 +1,8 @@
-# GitLab CI pipeline (placeholder)
 # pcf-pool/.gitlab-ci.yml
 
 stages:
   - validate
+  - mirror
 
 variables:
   NODE_VERSION: "18"
@@ -16,3 +16,12 @@ validate-structure:
     - echo "Validating monorepo structure..."
     - test -d controls && echo "controls/ exists" || (echo "controls/ missing" && exit 1)
     - echo "Structure OK"
+
+mirror-to-github:
+  stage: mirror
+  image: alpine/git:latest
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  script:
+    - git remote add github https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_USER/pcf-pool.git
+    - git push github HEAD:main --force
